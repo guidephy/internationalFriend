@@ -16,11 +16,15 @@ body {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
    display:inline-block;
-   max-width:80%;
+   max-width:90%;
 }
 
 .image-container {
   margin-bottom: 20px;
+  position: relative; /* 讓按鈕可以相對定位 */
+   display:flex; /*把圖片和按鈕都排成一排*/
+    align-items:center; /*讓圖片和按鈕垂直置中*/
+
 }
 
 #mainImage {
@@ -28,28 +32,34 @@ body {
   height: auto;
   display: block;
   margin: 0 auto;
+  flex: 1;/*讓圖片盡可能撐大，但不會超出容器*/
+}
+/*調整按鈕的位置*/
+.image-container button {
+    position: absolute;
+    top: 50%; /*垂直置中*/
+    transform: translateY(-50%);/*讓按鈕真正垂直置中*/
+  background-color: transparent; /*透明背景*/
+    border:none;/*移除邊框*/
+    cursor:pointer;
+    font-size: 2em;
+    padding: 10px; /*調整padding，讓按鈕點擊面積更大*/
+    color:#555; /*按鈕文字顏色*/
 }
 
-.button-container {
-  display:flex;
-   justify-content:center;
-  margin-top:20px;
+.image-container button span {
+   display:block; /*讓按鈕文字可垂直置中*/
 }
 
-.button-container button {
-  padding: 10px 20px;
-  margin: 0 10px;
-  font-size: 16px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+
+#prevBtn {
+  left: 10px;
 }
 
-.button-container button:hover {
-  background-color: #0056b3;
+#nextBtn {
+  right: 10px;
 }
+
 
 #drag-container .drop-area {
     position: absolute;
