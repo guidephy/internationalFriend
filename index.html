@@ -9,39 +9,117 @@
 <body>
   <div class="container">
     <div class="image-container">
-      <button id="prevBtn"><span><</span></button>  <!-- 上一頁按鈕 -->
-      <img id="mainImage" src="" alt="目前圖片">
-        <div id="drag-container" style="position: relative;">
-            <div class="drop-area" data-target="like-0" ></div>
-             <div class="drop-area" data-target="nation-0" ></div>
-             <div class="drop-area" data-target="like-1" ></div>
-             <div class="drop-area" data-target="nation-1" ></div>
-             <div class="drop-area" data-target="like-2" ></div>
-             <div class="drop-area" data-target="nation-2" ></div>
-            
-            <div class="drag-item" draggable="true" data-answer="工作" data-belong="like-0">工作</div>
-            <div class="drag-item" draggable="true" data-answer="地瓜" data-belong="like-0">地瓜</div>
-            <div class="drag-item" draggable="true" data-answer="宗教" data-belong="like-0">宗教</div>
-             <div class="drag-item" draggable="true" data-answer="蓮花" data-belong="like-0">蓮花</div>
-           <div class="drag-item" draggable="true" data-answer="農場" data-belong="like-1">農場</div>
-          <div class="drag-item" draggable="true" data-answer="唱歌" data-belong="like-1">唱歌</div>
-            <div class="drag-item" draggable="true" data-answer="海邊" data-belong="like-1">海邊</div>
-            <div class="drag-item" draggable="true" data-answer="米飯" data-belong="like-1">米飯</div>
-           <div class="drag-item" draggable="true" data-answer="歷史" data-belong="like-2">歷史</div>
-             <div class="drag-item" draggable="true" data-answer="繪畫" data-belong="like-2">繪畫</div>
-            <div class="drag-item" draggable="true" data-answer="爬山" data-belong="like-2">爬山</div>
-            <div class="drag-item" draggable="true" data-answer="豬肉" data-belong="like-2">豬肉</div>
-          <div class="drag-item" draggable="true" data-answer="南瓜" data-belong="like-2">南瓜</div>
-           <div class="drag-item" draggable="true" data-answer="china" data-belong="nation-0" ><img src="china.png" style="width:50px"></div>
-            <div class="drag-item" draggable="true" data-answer="indonesia" data-belong="nation-1"><img src="indonesia.png" style="width:50px"></div>
-             <div class="drag-item" draggable="true" data-answer="vietnam" data-belong="nation-2"><img src="vietnam.png" style="width:50px"></div>
-          <div class="drag-item" draggable="true" data-answer="netherlands" data-belong="nation-0"><img src="netherlands.png" style="width:50px"></div>
-          <div class="drag-item" draggable="true" data-answer="thailand" data-belong="nation-1"><img src="thailand.png" style="width:50px"></div>
-          <div class="drag-item" draggable="true" data-answer="singapore" data-belong="nation-2"><img src="singapore.png" style="width:50px"></div>
-
+      <button id="prevBtn"><span><</span></button>
+      <div class="image-and-drag">
+        <img id="mainImage" src="" alt="目前圖片">
+          <div id="drag-container" style="position: relative;">
+               <div class="drag-group-container">
+                     <div class="drag-group-top">
+                         <div class="answer-container">
+                            <select class="drop-area" data-target="like-0">
+                               <option value="" disabled selected>請選擇</option>
+                               <option value="工作">工作</option>
+                               <option value="地瓜">地瓜</option>
+                               <option value="宗教">宗教</option>
+                                <option value="蓮花">蓮花</option>
+                                 <option value="歷史">歷史</option>
+                                  <option value="繪畫">繪畫</option>
+                                   <option value="爬山">爬山</option>
+                                    <option value="農場">農場</option>
+                                    <option value="唱歌">唱歌</option>
+                                  <option value="海邊">海邊</option>
+                                   <option value="米飯">米飯</option>
+                                    <option value="學校">學校</option>
+                                     <option value="豬肉">豬肉</option>
+                                     <option value="南瓜">南瓜</option>
+                            </select>
+                              <p class="hint">喜歡的東西</p>
+                        </div>
+                         <div class="answer-container">
+                             <select class="drop-area" data-target="nation-0">
+                                   <option value="" disabled selected>請選擇</option>
+                                    <option value="vietnam"><img src="img/vietnam.png" style="width:50px">越南</option>
+                                    <option value="china"><img src="img/china.png" style="width:50px">中國</option>
+                                    <option value="netherlands"><img src="img/netherlands.png" style="width:50px">荷蘭</option>
+                                    <option value="indonesia"><img src="img/indonesia.png" style="width:50px">印尼</option>
+                                    <option value="singapore"><img src="img/singapore.png" style="width:50px">新加坡</option>
+                                    <option value="thailand"><img src="img/thailand.png" style="width:50px">泰國</option>
+                             </select>
+                             <p class="hint">國家</p>
+                         </div>
+                      </div>
+                   <div class="drag-group-top">
+                      <div class="answer-container">
+                            <select class="drop-area" data-target="like-1">
+                                 <option value="" disabled selected>請選擇</option>
+                               <option value="工作">工作</option>
+                               <option value="地瓜">地瓜</option>
+                               <option value="宗教">宗教</option>
+                                <option value="蓮花">蓮花</option>
+                                 <option value="歷史">歷史</option>
+                                  <option value="繪畫">繪畫</option>
+                                   <option value="爬山">爬山</option>
+                                    <option value="農場">農場</option>
+                                    <option value="唱歌">唱歌</option>
+                                  <option value="海邊">海邊</option>
+                                   <option value="米飯">米飯</option>
+                                    <option value="學校">學校</option>
+                                     <option value="豬肉">豬肉</option>
+                                     <option value="南瓜">南瓜</option>
+                            </select>
+                            <p class="hint">喜歡的東西</p>
+                      </div>
+                      <div class="answer-container">
+                        <select class="drop-area" data-target="nation-1">
+                             <option value="" disabled selected>請選擇</option>
+                                    <option value="vietnam"><img src="img/vietnam.png" style="width:50px">越南</option>
+                                    <option value="china"><img src="img/china.png" style="width:50px">中國</option>
+                                    <option value="netherlands"><img src="img/netherlands.png" style="width:50px">荷蘭</option>
+                                    <option value="indonesia"><img src="img/indonesia.png" style="width:50px">印尼</option>
+                                    <option value="singapore"><img src="img/singapore.png" style="width:50px">新加坡</option>
+                                    <option value="thailand"><img src="img/thailand.png" style="width:50px">泰國</option>
+                            </select>
+                        <p class="hint">國家</p>
+                        </div>
+                  </div>
+                       <div class="drag-group-top">
+                           <div class="answer-container">
+                               <select class="drop-area" data-target="like-2">
+                                   <option value="" disabled selected>請選擇</option>
+                               <option value="工作">工作</option>
+                               <option value="地瓜">地瓜</option>
+                               <option value="宗教">宗教</option>
+                                <option value="蓮花">蓮花</option>
+                                 <option value="歷史">歷史</option>
+                                  <option value="繪畫">繪畫</option>
+                                   <option value="爬山">爬山</option>
+                                    <option value="農場">農場</option>
+                                    <option value="唱歌">唱歌</option>
+                                  <option value="海邊">海邊</option>
+                                   <option value="米飯">米飯</option>
+                                    <option value="學校">學校</option>
+                                     <option value="豬肉">豬肉</option>
+                                     <option value="南瓜">南瓜</option>
+                               </select>
+                                  <p class="hint">喜歡的東西</p>
+                         </div>
+                           <div class="answer-container">
+                                <select class="drop-area" data-target="nation-2">
+                                      <option value="" disabled selected>請選擇</option>
+                                    <option value="vietnam"><img src="img/vietnam.png" style="width:50px">越南</option>
+                                    <option value="china"><img src="img/china.png" style="width:50px">中國</option>
+                                    <option value="netherlands"><img src="img/netherlands.png" style="width:50px">荷蘭</option>
+                                    <option value="indonesia"><img src="img/indonesia.png" style="width:50px">印尼</option>
+                                    <option value="singapore"><img src="img/singapore.png" style="width:50px">新加坡</option>
+                                    <option value="thailand"><img src="img/thailand.png" style="width:50px">泰國</option>
+                                </select>
+                                <p class="hint">國家</p>
+                           </div>
+                      </div>
+               </div>
         </div>
-
-        <button id="nextBtn"><span>></span></button>  <!-- 下一頁按鈕 -->
+      </div>
+       <button id="nextBtn"><span>></span></button>
     </div>
   </div>
   <script src="script.js"></script>
