@@ -5,30 +5,53 @@ const dragContainer = document.getElementById('drag-container');
 const dropAreas = document.querySelectorAll('.drop-area');
 
 let currentImage = 1;
-const totalImages = 11;
+const totalImages = 6;
 let dragData = {};
 
 // 設定正確答案的物件
 const correctAnswers = {
     "like-0": "米飯",
-    "nation-0": "thailand",
+    "nation-0": "china",
     "like-1": "海邊",
     "nation-1": "indonesia",
     "like-2": "歷史",
     "nation-2": "vietnam"
 };
 
+
+// 圖片預載入陣列
+const imagePaths = [
+  'img/stage1-1.png',
+  'img/stage1-2.png',
+  'img/stage1-3.png',
+  'img/stage1-4.png',
+  'img/stage1-5.png',
+  'img/stage1-6.png'
+];
+let preloadedImages = []; // 儲存預載入的圖片
+let imagesInitialized = false; // 判斷是否初始化圖片陣列
+
+
 function updateImage() {
     let imagePath;
     let dragMode = false;
+
+    //在 `updateImage` 開始時，判斷是否需要初始化圖片陣列
+    if (!imagesInitialized) {
+        preloadedImages = imagePaths.map(path => {
+            const img = new Image();
+            img.src = path;
+            return img;
+        });
+         imagesInitialized = true;
+    }
+
     switch (currentImage) {
         case 1:
             imagePath = 'img/stage1-1.png';
-            document.getElementById('prevBtn').style.visibility='hidden';
             break;
         case 2:
             imagePath = 'img/stage1-2.png';
-            document.getElementById('prevBtn').style.visibility='visible';
             break;
         case 3:
             imagePath = 'img/stage1-3.png';
@@ -43,23 +66,6 @@ function updateImage() {
             break;
         case 6:
              imagePath = 'img/stage1-6.png';
-             break;
-        case 7:
-             imagePath = 'img/stage1-7.png';
-             break;
-        case 8:
-             imagePath = 'img/stage1-8.png';
-             break;
-        case 9:
-             imagePath = 'img/stage1-9.png';
-             break;
-        case 10:
-             imagePath = 'img/stage1-10.png';
-              document.getElementById('nextBtn').style.visibility='visible';
-             break;
-        case 11:
-             imagePath = 'img/stage1-11.png';
-             document.getElementById('nextBtn').style.visibility='hidden';
              break;
          default:
              imagePath = 'img/stage1-1.png';
@@ -96,23 +102,22 @@ nextBtn.addEventListener('click', () => {
             });
 
             if (allCorrect) {
-                alert("完全正確，看來你己經認識我的朋友了")
                 currentImage++;
-                if (currentImage > totalImages) {
-                    currentImage = 1;
-                }
-                updateImage();
+                 if (currentImage > totalImages) {
+                      currentImage = 1;
+                  }
+                  updateImage();
             } else {
                 alert('答案不完全正確喔!請重新選擇答案。');
             }
         } else {
-            alert('答案不完全正確喔!請重新選擇答案。');
-        }
+             alert('答案不完全正確喔!請重新選擇答案。');
+         }
     } else {
         currentImage++;
-         if (currentImage > totalImages) {
-              currentImage = 1;
-           }
+        if (currentImage > totalImages) {
+            currentImage = 1;
+        }
         updateImage();
     }
 });
@@ -123,5 +128,5 @@ updateImage();
 dropAreas.forEach(select => {
   select.addEventListener('change', (e) => {
     dragData[e.target.dataset.target] = e.target.value; //儲存答案
-    });
+  });
 });
