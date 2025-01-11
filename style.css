@@ -31,6 +31,7 @@ body {
       display: flex;
       flex-direction: column;
        overflow: hidden;
+           position: relative;/*讓按鈕可以絕對定位*/
 }
 
 #mainImage {
@@ -40,6 +41,25 @@ body {
   margin: 0 auto;
   object-fit: contain;
     object-position: center;
+}
+/*調整 startButton 的樣式*/
+#startBtn{
+     position: absolute; /*絕對定位*/
+      top: 55%; /*垂直置中*/
+      left: 50%;/*水平置中*/
+    transform: translate(-50%, -50%); /*讓按鈕真正的中心置中*/
+    padding: 15px 30px;
+    font-size: 24px;
+    background-color: #ff6f61; /*深橘紅 */
+      color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /*按鈕陰影*/
+    transition: background-color 0.3s ease; /*滑鼠hover動畫*/
+}
+#startBtn:hover {
+  background-color: #e65145; /*稍微暗一點的橘紅*/
 }
 
 /*調整按鈕的位置*/
