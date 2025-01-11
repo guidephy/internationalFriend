@@ -1,0 +1,106 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.container {
+  text-align: center;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   display:inline-block;
+   max-width:90%;
+}
+
+.image-container {
+  margin-bottom: 20px;
+}
+
+#mainImage {
+    max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.button-container {
+  display:flex;
+   justify-content:center;
+  margin-top:20px;
+}
+
+.button-container button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button-container button:hover {
+  background-color: #0056b3;
+}
+
+#drag-container .drop-area {
+    position: absolute;
+    border: 2px dashed gray;
+    width: 80px;
+    height: 25px;
+    background-color: rgba(200, 200, 200, 0.3);
+    margin: 10px;
+}
+
+#drag-container .drag-item {
+    display: inline-block;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    cursor: grab;
+    margin: 5px;
+    user-select: none; /* 禁止文字選取 */
+}
+
+#drag-container .drag-item img{
+    max-width: 100%;
+    display: block;
+}
+
+#drag-container .drop-area.drag-over {
+  background-color: rgba(100,200,100,0.3);
+}
+
+/*設定各個 droppable 區塊的位置，請根據你的圖片調整*/
+.drop-area[data-target="like-0"] {
+    top: 33%;
+    left: 15%;
+}
+.drop-area[data-target="nation-0"] {
+    top: 40%;
+    left: 15%;
+}
+.drop-area[data-target="like-1"] {
+    top: 33%;
+    left: 45%;
+}
+.drop-area[data-target="nation-1"] {
+    top: 40%;
+    left: 45%;
+}
+.drop-area[data-target="like-2"] {
+     top: 33%;
+    left: 75%;
+}
+.drop-area[data-target="nation-2"] {
+    top: 40%;
+    left: 75%;
+}
