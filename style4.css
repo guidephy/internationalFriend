@@ -1,0 +1,187 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    overflow: auto;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    max-width: 90%;
+}
+
+.image-container {
+    margin-bottom: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.image-and-drag {
+    display: flex;
+    flex-direction: column;
+    min-height: 200px; /* 確保內容撐開 */
+    overflow: hidden;
+    position: relative;
+    /*讓按鈕可以絕對定位*/
+}
+
+#mainImage {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+    object-position: center;
+}
+
+
+/*調整按鈕的位置*/
+.image-container button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 2em;
+    padding: 10px;
+    color: #555;
+    user-select: none; /* 防止文字被選取 */
+}
+
+.image-container button span {
+    display: block;
+}
+
+#prevBtn {
+    left: 10px;
+}
+
+#nextBtn {
+    right: 10px;
+}
+
+#drag-container {
+    width: 100%;
+    margin: 20px auto;
+    position: relative;
+}
+
+
+/*調整輸入框的樣式*/
+#mainImage + input[type="text"] {
+    display: block;
+    /*確保輸入框顯示*/
+    margin: 15px auto;
+    /*置中輸入框*/
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 80%;
+    max-width: 300px;
+    box-sizing: border-box;
+    /* 讓寬度包含邊框和內邊距 */
+    transition: border-color 0.3s ease;
+}
+
+#mainImage + input[type="text"]:focus {
+    border-color: #66afe9;
+    outline: none;
+}
+
+/* 新增米苔目拖曳區樣式 */
+#mitaime-drag-area {
+    display: none; /* 初始隱藏 */
+    text-align: center;
+    position: relative; /* 確保按鈕的絕對定位 */
+}
+
+#step-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+    min-height: 120px; /* 新增最小高度 */
+}
+
+.step-card {
+    background-color: #fff;
+    border: 2px solid #ddd;
+    padding: 10px;
+    margin: 5px;
+    cursor: move;
+    width: 80px; /* 調整寬度 */
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    user-select: none; /* 防止文字被選取 */
+}
+
+.step-card img {
+    max-width: 100%;
+    height: auto;
+}
+
+#target-area {
+    display: flex;
+    justify-content: flex-start; /* 靠左對齊 */
+    align-items: center;
+    flex-wrap: nowrap; /* 強制單排 */
+    min-height: 100px;
+    border: 2px dashed #aaa;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 600px; /* 增加最大寬度，容納所有卡片 */
+    box-sizing: border-box;
+    overflow-x: auto; /* 水平滾動 */
+}
+
+#target-area .step-card{
+    margin:0px;
+    width: 60px;
+    height: 80px;
+    border: 1px solid #aaa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0; /* 防止卡片被擠壓 */
+}
+
+#target-area .step-card img {
+    max-width: 100%;
+    max-height: 60px;
+    object-fit: contain;  /* 保持圖片比例並完整顯示 */
+}
+.drag-over{
+  border-color:red;
+    background-color:#f0f0f0;
+}
+/* 增加響應式設計 */
+@media (max-width: 768px) {
+    .container {
+         max-width: 100%;
+        width:auto; /* 在小螢幕上使用較小的寬度 */
+    }
+
+  #target-area {
+         width: 95%;
+       max-width: 95%; /* 增加最大寬度，容納所有卡片 */
+      
+  }
+    .image-container button {
+        font-size: 1.5em; /* 在小螢幕上縮小按鈕 */
+        padding: 5px;
+    }
+}
