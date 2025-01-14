@@ -94,6 +94,7 @@ function updateImage() {
 function handleMitaimeDrag(showMitaimeDrag){
       if (showMitaimeDrag) { // 根據你的圖片編號
         mitaimeDragArea.style.display = 'block';
+        mitaimeDragArea.style.height = 'auto';// 顯示時將高度設為 auto
         dragContainer.style.display = 'none'; //隱藏原本的拖曳區
         targetArea.innerHTML = ""; //清空目標區
         stepCards.forEach(card => {
@@ -101,6 +102,7 @@ function handleMitaimeDrag(showMitaimeDrag){
         });
     } else {
         mitaimeDragArea.style.display = 'none';
+        mitaimeDragArea.style.height = '0';// 隱藏時高度設為 0
         dragContainer.style.display='block';
     }
 }

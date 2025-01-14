@@ -106,6 +106,9 @@ body {
     display: none; /* 初始隱藏 */
     text-align: center;
     position: relative; /* 確保按鈕的絕對定位 */
+    overflow: hidden; /* 隱藏超出區域的內容 */
+    height: 0; /* 初始高度為 0 */
+    transition: height 0.3s ease-in-out; /* 加入高度變化的過渡效果 */
 }
 
 #step-cards {
