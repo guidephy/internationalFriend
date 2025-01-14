@@ -45,9 +45,9 @@ const gameConfig = {
     nextPageURL:"https://guidephy.github.io/internationalFriend/gancyuanTemple",//下一頁網址
     answerKeyWord:"friend", //輸入框關鍵字
     farewellPages: {  //新增
-      14: { text: "ขอบคุณ, ลาก่อน!", audio: "img/thai_farewell.mp3" ,},
-      15: { text: "Cảm ơn, Tạm biệt!", audio: "img/vietnamese_farewell.mp3" },
-      16: { text: "Terima kasih, Sampai jumpa!", audio: "img/indonesian_farewell.mp3" },
+      14: { text: "ขอบคุณ, ลาก่อน!", audio: "https://guidephy.github.io/internationalFriend/img/thai_farewell" ,},
+      15: { text: "Cảm ơn, Tạm biệt!", audio: "https://guidephy.github.io/internationalFriend/img/vietnamese_farewell.mp3" },
+      16: { text: "Terima kasih, Sampai jumpa!", audio: "https://guidephy.github.io/internationalFriend/img/indonesian_farewell.mp3" },
     },
 };
 // 圖片預載入
