@@ -8,6 +8,7 @@ answerInput.id = "answerInput";
 const mitaimeDragArea = document.getElementById('mitaime-drag-area');
 const stepCards = document.querySelectorAll('.step-card');
 const targetArea = document.getElementById('target-area');
+const farewellContainer = document.getElementById('farewell-container'); // 新增
 let draggedItem = null;
 
 let currentImageIndex = 1;
@@ -42,7 +43,12 @@ const gameConfig = {
     answerInputImage: 10, //設定要出現輸入框的圖片
     mitaimeDragImage:5, //米苔目拖曳模式的圖片
     nextPageURL:"https://guidephy.github.io/internationalFriend/gancyuanTemple",//下一頁網址
-    answerKeyWord:"friend" //輸入框關鍵字
+    answerKeyWord:"friend", //輸入框關鍵字
+    farewellPages: {  //新增
+      14: { text: "ขอบคุณ, ลาก่อน!", audio: "img/thai_farewell.mp3" ,},
+      15: { text: "Cảm ơn, Tạm biệt!", audio: "img/vietnamese_farewell.mp3" },
+      16: { text: "Terima kasih, Sampai jumpa!", audio: "img/indonesian_farewell.mp3" },
+    },
 };
 // 圖片預載入
 function preloadImages() {
@@ -65,6 +71,7 @@ function getImageState(imageIndex) {
         showNextButton: true, // 總是顯示 Next 按鈕
         showAnswerInput: imageIndex === gameConfig.answerInputImage,
         showMitaimeDrag:imageIndex === gameConfig.mitaimeDragImage,
+        farewell: gameConfig.farewellPages[imageIndex] || null,
     };
 
    if (imageIndex === gameConfig.totalImages){
@@ -78,24 +85,23 @@ function updateImage() {
     const state = getImageState(currentImageIndex);
 
     mainImage.src = state.imagePath;
-    dragContainer.style.display = state.dragMode ? 'block' : 'none';
     prevBtn.style.visibility = state.showPrevButton ? 'visible' : 'hidden';
     nextBtn.style.visibility = state.showNextButton ? 'visible' : 'hidden';
-
-
+    // 根據狀態顯示/隱藏元素
+    dragContainer.style.display = state.dragMode ? 'block' : 'none';
+    
     // 米苔目拖曳
-   handleMitaimeDrag(state.showMitaimeDrag);
-
-
+    handleMitaimeDrag(state.showMitaimeDrag);
     // 處理輸入框的顯示與隱藏
     handleAnswerInput(state.showAnswerInput);
+     // 處理道別語和音訊播放
+    handleFarewell(state.farewell);
 }
 //處理米苔目拖曳
 function handleMitaimeDrag(showMitaimeDrag){
       if (showMitaimeDrag) { // 根據你的圖片編號
         mitaimeDragArea.style.display = 'block';
         mitaimeDragArea.style.height = 'auto';// 顯示時將高度設為 auto
-        dragContainer.style.display = 'none'; //隱藏原本的拖曳區
         targetArea.innerHTML = ""; //清空目標區
         stepCards.forEach(card => {
             card.style.display = 'block'; //顯示拖曳卡片
@@ -103,27 +109,61 @@ function handleMitaimeDrag(showMitaimeDrag){
     } else {
         mitaimeDragArea.style.display = 'none';
         mitaimeDragArea.style.height = '0';// 隱藏時高度設為 0
-        dragContainer.style.display='block';
+
     }
 }
 //處理輸入框
 function handleAnswerInput(showAnswerInput){
-     if (showAnswerInput) {
-        answerInput.type = 'text';
-        answerInput.placeholder = '請輸入答案';
-        answerInput.style.display = 'block';
-         // 檢查是否已插入，避免重複插入
+    if (showAnswerInput) {
+         answerInput.style.display = 'block'; //確保顯示
+        // 建議：增加 placeholder 屬性，讓使用者知道要輸入什麼
+         answerInput.placeholder = '請輸入答案'; // 加入 placeholder
         if (!answerInput.parentNode || answerInput.parentNode !== mainImage.parentElement) {
-             mainImage.parentElement.insertBefore(answerInput, mainImage.nextSibling) //將輸入框插入到圖片後面
-         }
+            mainImage.parentElement.insertBefore(answerInput, mainImage.nextSibling)
+        }
     } else {
         answerInput.style.display = 'none';
         if (answerInput.parentNode) {
-            answerInput.parentNode.removeChild(answerInput)
-        } // 移除輸入框
+            answerInput.parentNode.removeChild(answerInput);
+        }
     }
 }
+//處理道別語
+function handleFarewell(farewellData) {
+    farewellContainer.innerHTML = "";
+    if (farewellData) {
+        farewellContainer.style.display = 'flex';//顯示容器
+        const farewellText = document.createElement('span');
+        farewellText.textContent = farewellData.text;
 
+        const audioIcon = document.createElement('img');
+        audioIcon.src = "img/speaker.png";
+        audioIcon.alt = "播放音訊";
+        audioIcon.classList.add("audio-icon");//增加class
+        audioIcon.style.cursor = "pointer";
+
+        audioIcon.addEventListener('click', () => {
+            const audio = new Audio(farewellData.audio);
+
+            audio.addEventListener('loadeddata', () => { // 加入 loadeddata 事件監聽器
+                audio.play()
+                    .catch(error => { // 加入錯誤處理
+                        console.error('音訊播放失敗:', error);
+                    });
+
+            });
+            audio.addEventListener('error', (error) => { // 添加 error 事件監聽器
+                console.error('音訊載入錯誤:', error);
+            });
+
+        });
+
+        farewellContainer.appendChild(farewellText);
+        farewellContainer.appendChild(audioIcon);
+    } else {
+        farewellContainer.style.display = 'none'; //隱藏容器
+    }
+}
 // 3. 檢查輸入框的函式
 function checkInputAnswer() {
     const inputValue = answerInput.value.trim().toLowerCase(); // 取得輸入值並轉為小寫

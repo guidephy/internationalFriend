@@ -76,29 +76,35 @@ body {
     width: 100%;
     margin: 20px auto;
     position: relative;
+    display:none; /* 初始隱藏 */
 }
 
 
 /*調整輸入框的樣式*/
 #mainImage + input[type="text"] {
-    display: block;
-    /*確保輸入框顯示*/
-    margin: 15px auto;
-    /*置中輸入框*/
-    padding: 10px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
+    display: none; /* 初始隱藏 */
+    margin: 25px auto; /* 增加外邊距，與圖片保持距離 */
+    padding: 12px 15px; /* 增加左右內邊距 */
+    border: 1px solid #ccc; /* 保持邊框 */
+    border-radius: 10px; /* 增加圓角 */
     font-size: 16px;
-    width: 80%;
-    max-width: 300px;
+    width: 70%; /* 加寬輸入框 */
+    max-width: 400px; /* 限制最大寬度 */
     box-sizing: border-box;
-    /* 讓寬度包含邊框和內邊距 */
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease; /* 保持過渡效果 */
+    display: block; /* 確保輸入框顯示 */
+    text-align: center; /* 文字置中 */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /*加入陰影 */
 }
 
 #mainImage + input[type="text"]:focus {
     border-color: #66afe9;
-    outline: none;
+    outline: none; /* 保持焦點時邊框顏色 */
+}
+ /* 提示文字樣式 */
+#mainImage + input[type="text"]::placeholder {
+  color:#aaa;
+  font-style:italic;
 }
 
 /* 新增米苔目拖曳區樣式 */
@@ -176,6 +182,21 @@ body {
 
 .selected{
     background-color:#f0f0f0;
+}
+#farewell-container {
+    margin-top: 10px;
+    text-align: center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    display: none; /* 初始隱藏 */
+}
+
+.audio-icon {
+    width: 20px; /* 調整喇叭圖示大小 */
+    height: 20px;
+    margin-left: 5px;
+    vertical-align: middle; /*讓圖示和文字置中對齊*/
 }
 /* 增加響應式設計 */
 @media (max-width: 768px) {
