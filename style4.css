@@ -121,11 +121,15 @@ body {
     border: 2px solid #ddd;
     padding: 10px;
     margin: 5px;
-    cursor: move;
+    cursor: pointer;
     width: 80px; /* 調整寬度 */
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     user-select: none; /* 防止文字被選取 */
+    transition: transform 0.2s ease;
+}
+.step-card:hover{
+    transform: scale(1.05);
 }
 
 .step-card img {
@@ -157,6 +161,8 @@ body {
     align-items: center;
     justify-content: center;
     flex-shrink: 0; /* 防止卡片被擠壓 */
+    cursor: pointer;
+
 }
 
 #target-area .step-card img {
@@ -164,8 +170,8 @@ body {
     max-height: 60px;
     object-fit: contain;  /* 保持圖片比例並完整顯示 */
 }
-.drag-over{
-  border-color:red;
+
+.selected{
     background-color:#f0f0f0;
 }
 /* 增加響應式設計 */

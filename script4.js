@@ -99,7 +99,6 @@ function handleMitaimeDrag(showMitaimeDrag){
         stepCards.forEach(card => {
             card.style.display = 'block'; //顯示拖曳卡片
         });
-
     } else {
         mitaimeDragArea.style.display = 'none';
         dragContainer.style.display='block';
@@ -115,8 +114,6 @@ function handleAnswerInput(showAnswerInput){
         if (!answerInput.parentNode || answerInput.parentNode !== mainImage.parentElement) {
              mainImage.parentElement.insertBefore(answerInput, mainImage.nextSibling) //將輸入框插入到圖片後面
          }
-
-
     } else {
         answerInput.style.display = 'none';
         if (answerInput.parentNode) {
@@ -137,85 +134,19 @@ function checkInputAnswer() {
     }
 }
 
-//拖曳開始
-stepCards.forEach(card => {
-    card.addEventListener('dragstart', (e) => {
-        draggedItem = e.target;
-        e.dataTransfer.effectAllowed = 'move';
-        e.dataTransfer.setData('text/plain', null); // Required for Firefox
 
+// 點擊卡片事件
+stepCards.forEach(card => {
+    card.addEventListener('click', () => {
+        if (card.parentElement.id === 'step-cards') {
+            targetArea.appendChild(card);
+             card.classList.add('selected');
+        } else {
+            document.getElementById('step-cards').appendChild(card);
+              card.classList.remove('selected');
+        }
     });
 });
-//拖曳進入
-targetArea.addEventListener('dragenter', (e) => {
-    e.preventDefault(); // 阻止預設行為
-    if(e.target.classList.contains('step-card') || e.target===targetArea ){
-        e.target.classList.add('drag-over');
-    }
-
-});
-//拖曳離開
-targetArea.addEventListener('dragleave', (e) => {
-    e.preventDefault(); // 阻止預設行為
-    if(e.target.classList.contains('step-card') || e.target===targetArea ){
-        e.target.classList.remove('drag-over');
-    }
-});
-//拖曳放開
-targetArea.addEventListener('dragover', (e) => {
-    e.preventDefault(); // 阻止預設行為
-});
-
-//放下
-targetArea.addEventListener('drop', (e) => {
-    e.preventDefault();
-    if (e.target === targetArea) {
-        // 將拖曳的卡片放到目標區域
-        e.target.classList.remove('drag-over');
-        if (draggedItem) {
-            targetArea.appendChild(draggedItem);
-        }
-    }else if(e.target.classList.contains('step-card')){
-        e.target.classList.remove('drag-over');
-        if (draggedItem) {
-           targetArea.insertBefore(draggedItem, e.target);
-        }
-    }
-
-});
-
-//stepCards的拖曳事件
-const stepCardContainer = document.getElementById('step-cards');
-stepCardContainer.addEventListener('dragenter', (e) => {
-    e.preventDefault(); // 阻止預設行為
-    if (e.target.classList.contains('step-card') || e.target === stepCardContainer) {
-        e.target.classList.add('drag-over');
-    }
-
-});
-//拖曳離開
-stepCardContainer.addEventListener('dragleave', (e) => {
-    e.preventDefault(); // 阻止預設行為
-    if (e.target.classList.contains('step-card') || e.target === stepCardContainer) {
-        e.target.classList.remove('drag-over');
-    }
-});
-//拖曳放開
-stepCardContainer.addEventListener('dragover', (e) => {
-    e.preventDefault(); // 阻止預設行為
-});
-stepCardContainer.addEventListener('drop', (e) => {
-    e.preventDefault();
-    if (e.target.classList.contains('step-card') || e.target === stepCardContainer) { // 修改這裡
-        e.target.classList.remove('drag-over');
-        if (draggedItem) {
-            if (draggedItem.parentElement === targetArea) {
-                stepCardContainer.appendChild(draggedItem)
-            }
-        }
-    }
-});
-
 
 // 5. 事件處理
 prevBtn.addEventListener('click', () => {
