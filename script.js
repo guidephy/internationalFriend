@@ -149,7 +149,7 @@ prevBtn.addEventListener('click', () => {
 
 nextBtn.addEventListener('click', () => {
       if (currentImageIndex === gameConfig.totalImages) {
-        window.location.href = 'https://guidephy.github.io/internationalFriend/gancyuanTemple';
+        window.location.href = 'https://guidephy.github.io/internationalFriend/';
         return;
       }
 
