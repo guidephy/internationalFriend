@@ -121,6 +121,18 @@ function handleAnswerInput(showAnswerInput){
         if (!answerInput.parentNode || answerInput.parentNode !== mainImage.parentElement) {
             mainImage.parentElement.insertBefore(answerInput, mainImage.nextSibling)
         }
+            // 手動設定樣式
+            answerInput.style.margin = '15px auto';
+            answerInput.style.padding = '10px';
+            answerInput.style.border = '2px solid #ccc';
+            answerInput.style.borderRadius = '5px';
+            answerInput.style.fontSize = '16px';
+            answerInput.style.width = '80%';
+             answerInput.style.maxWidth = '300px';
+            answerInput.style.boxSizing = 'border-box';
+            answerInput.style.transition = 'border-color 0.3s ease';
+            answerInput.style.textAlign = 'center';
+            answerInput.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
     } else {
         answerInput.style.display = 'none';
         if (answerInput.parentNode) {

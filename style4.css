@@ -79,34 +79,6 @@ body {
     display:none; /* 初始隱藏 */
 }
 
-
-/*調整輸入框的樣式*/
-#mainImage + input[type="text"] {
-    display: none; /* 初始隱藏 */
-    margin: 25px auto; /* 增加外邊距，與圖片保持距離 */
-    padding: 12px 15px; /* 增加左右內邊距 */
-    border: 1px solid #ccc; /* 保持邊框 */
-    border-radius: 10px; /* 增加圓角 */
-    font-size: 16px;
-    width: 70%; /* 加寬輸入框 */
-    max-width: 400px; /* 限制最大寬度 */
-    box-sizing: border-box;
-    transition: border-color 0.3s ease; /* 保持過渡效果 */
-    display: block; /* 確保輸入框顯示 */
-    text-align: center; /* 文字置中 */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /*加入陰影 */
-}
-
-#mainImage + input[type="text"]:focus {
-    border-color: #66afe9;
-    outline: none; /* 保持焦點時邊框顏色 */
-}
- /* 提示文字樣式 */
-#mainImage + input[type="text"]::placeholder {
-  color:#aaa;
-  font-style:italic;
-}
-
 /* 新增米苔目拖曳區樣式 */
 #mitaime-drag-area {
     display: none; /* 初始隱藏 */
