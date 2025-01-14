@@ -45,9 +45,9 @@ const gameConfig = {
     nextPageURL:"https://guidephy.github.io/internationalFriend/gancyuanTemple",//下一頁網址
     answerKeyWord:"friend", //輸入框關鍵字
     farewellPages: {  //新增
-      14: { text: "ขอบคุณ, ลาก่อน!", audio: "https://guidephy.github.io/internationalFriend/img/thai_farewell.mp3" ,},
-      15: { text: "Cảm ơn, Tạm biệt!", audio: "https://guidephy.github.io/internationalFriend/img/vietnamese_farewell.mp3" },
-      16: { text: "Terima kasih, Sampai jumpa!", audio: "https://guidephy.github.io/internationalFriend/img/indonesian_farewell.mp3" },
+      14: { text: "ขอบคุณ, ลาก่อน!", audio: "img/thai_farewell.mp3" ,},
+      15: { text: "Cảm ơn, Tạm biệt!", audio: "img/vietnamese_farewell.mp3" },
+      16: { text: "Terima kasih, Sampai jumpa!", audio: "img/indonesian_farewell.mp3" },
     },
 };
 // 圖片預載入
@@ -155,21 +155,21 @@ function handleFarewell(farewellData) {
         audioIcon.style.cursor = "pointer";
 
         audioIcon.addEventListener('click', () => {
-            const audio = new Audio(farewellData.audio);
-
+           const audio = new Audio(farewellData.audio); //在點擊時，才創建音訊物件
             audio.addEventListener('loadeddata', () => { // 加入 loadeddata 事件監聽器
-                audio.play()
-                    .catch(error => { // 加入錯誤處理
-                        console.error('音訊播放失敗:', error);
+                 console.log("audio loaded"); // 加入檢查點
+                 audio.addEventListener('canplaythrough', () => { // 加入 canplaythrough 事件監聽器
+                    console.log("audio can play"); // 加入檢查點
+                     audio.play()
+                         .catch(error => { // 加入錯誤處理
+                            console.error('音訊播放失敗:', error);
+                        });
                     });
-
             });
-            audio.addEventListener('error', (error) => { // 添加 error 事件監聽器
+              audio.addEventListener('error', (error) => { // 添加 error 事件監聽器
                 console.error('音訊載入錯誤:', error);
             });
-
         });
-
         farewellContainer.appendChild(farewellText);
         farewellContainer.appendChild(audioIcon);
     } else {
