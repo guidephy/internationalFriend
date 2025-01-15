@@ -1,0 +1,174 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    overflow: auto;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    max-width: 90%;
+}
+
+.image-container {
+    margin-bottom: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column; /* 讓內容垂直排列 */
+}
+
+.image-and-drag {
+    display: flex;
+    flex-direction: column;
+    min-height: 200px; /* 確保內容撐開 */
+    overflow: hidden;
+    position: relative;
+    /*讓按鈕可以絕對定位*/
+}
+
+#mainImage {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+    object-position: center;
+}
+
+/*調整按鈕的位置*/
+.image-container button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 2em;
+    padding: 10px;
+    color: #555;
+}
+
+.image-container button span {
+    display: block;
+}
+
+#prevBtn {
+    left: 10px;
+}
+
+#nextBtn {
+    right: 10px;
+}
+
+#drag-container {
+    width: 100%;
+    margin: 20px auto;
+    position: relative;
+}
+
+/*把填空區塊分三組水平排列*/
+#drag-container .drag-group-container {
+    display: flex;
+    justify-content: space-around; /* 水平等距排列 */
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+/*把填空區塊垂直排列*/
+#drag-container .answer-container {
+    display: flex;
+    flex-direction: column;  /* 改為垂直排列 */
+    align-items: center;
+    margin-bottom: 10px; /* 每組答案間的間距*/
+}
+
+/*讓 select 元素看起來像個填空空格*/
+#drag-container select.drop-area {
+    border: 2px dashed gray;
+    width: 80px;
+    height: 25px;
+    background-color: rgba(200, 200, 200, 0.3);
+    margin: 5px;
+    appearance: none;
+    /* 移除 select 的預設樣式 */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 0;
+    /*移除 select 的內邊距*/
+    text-indent: 5px;
+    /*讓文字不要貼邊*/
+    font-size: 16px;
+}
+
+
+#drag-container .hint {
+    margin: 0 5px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/*答案選項區不要顯示*/
+#drag-container .drag-items-container {
+    display: none;
+}
+
+#drag-container .drag-group-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+#drag-container .drag-item {
+    display: inline-block;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    cursor: grab;
+    margin: 5px;
+    user-select: none;
+    vertical-align: top;
+}
+
+#drag-container .drag-item img {
+    max-width: 100%;
+    display: block;
+}
+
+
+#drag-container .drop-area.drag-over {
+    background-color: rgba(100, 200, 100, 0.3);
+}
+
+/*調整輸入框的樣式*/
+#mainImage + input[type="text"] {
+    display: block;
+    /*確保輸入框顯示*/
+    margin: 15px auto;
+    /*置中輸入框*/
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 80%;
+    max-width: 300px;
+    box-sizing: border-box;
+    /* 讓寬度包含邊框和內邊距 */
+    transition: border-color 0.3s ease;
+}
+
+#mainImage + input[type="text"]:focus {
+    border-color: #66afe9;
+    outline: none;
+}
