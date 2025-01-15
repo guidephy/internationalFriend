@@ -149,7 +149,7 @@ prevBtn.addEventListener('click', () => {
 
 nextBtn.addEventListener('click', () => {
       if (currentImageIndex === gameConfig.totalImages) {
-        window.location.href = 'https://guidephy.github.io/internationalFriend/agriculture.html';
+        window.location.href = 'https://guidephy.github.io/internationalFriend/culture.html';
         return;
       }
 
