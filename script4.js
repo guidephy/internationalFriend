@@ -210,10 +210,12 @@ prevBtn.addEventListener('click', () => {
 
 nextBtn.addEventListener('click', () => {
      if (currentImageIndex === gameConfig.totalImages) {
-          window.location.href = gameConfig.nextPageURL;
+          window.location.href = 'https://forms.gle/r8Wekv2eo7LPwFuS8';
           return;
      }
 
+
+    
     if (currentImageIndex === gameConfig.answerInputImage) { //檢查輸入框答案
         if (checkInputAnswer()) {
             currentImageIndex++;
