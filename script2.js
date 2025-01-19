@@ -128,7 +128,7 @@ function checkAnswers() {
 // 4.檢查輸入框的函式
 function checkInputAnswer() {
     const inputValue = answerInput.value.trim().toLowerCase(); // 取得輸入值並轉為小寫
-    if (inputValue.includes("coast")) { // 修改為判斷是否包含 coast
+    if (inputValue.includes("tsaoc")) { // 修改為判斷是否包含 coast
         alert('完全正確，你對東南亞的宗教信仰已有初步的認識囉!');
         return true;
     } else {
