@@ -43,7 +43,7 @@ const gameConfig = {
     answerInputImage: 10, //設定要出現輸入框的圖片
     mitaimeDragImage:5, //米苔目拖曳模式的圖片
     nextPageURL:"https://guidephy.github.io/internationalFriend/gancyuanTemple",//下一頁網址
-    answerKeyWord:"friend", //輸入框關鍵字
+    answerKeyWord:"dneirf", //輸入框關鍵字
     farewellPages: {  //新增
       14: { text: "ขอบคุณ, ลาก่อน!", audio: "img/thai_farewell.mp3" ,},
       15: { text: "Cảm ơn, Tạm biệt!", audio: "img/vietnamese_farewell.mp3" },
