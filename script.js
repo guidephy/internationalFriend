@@ -131,7 +131,7 @@ function checkAnswers() {
 // 4.檢查輸入框的函式
 function checkInputAnswer(){
     const inputValue = answerInput.value.trim().toLowerCase(); // 取得輸入值並轉為小寫
-  if (inputValue.includes("culture")) {
+  if (inputValue.includes("erutluc")) {
     alert('完全正確，你的確了解我朋友們國家的重大節慶。');
     return true;
     } else {
