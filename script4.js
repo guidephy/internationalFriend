@@ -74,9 +74,7 @@ function getImageState(imageIndex) {
         farewell: gameConfig.farewellPages[imageIndex] || null,
     };
 
-   if (imageIndex === gameConfig.totalImages){
-        state.showNextButton=false //最後一頁不顯示next按鈕
-    }
+   
     return state;
 }
 
