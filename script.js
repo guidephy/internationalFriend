@@ -149,7 +149,7 @@ prevBtn.addEventListener('click', () => {
 
 nextBtn.addEventListener('click', () => {
       if (currentImageIndex === gameConfig.totalImages) {
-        window.location.href = 'https://forms.gle/kUfoPN4GYw2JHRh77';
+        window.location.href = 'https://guidephy.github.io/internationalFriend/culture';
         return;
       }
 
