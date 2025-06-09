@@ -208,7 +208,7 @@ prevBtn.addEventListener('click', () => {
 
 nextBtn.addEventListener('click', () => {
      if (currentImageIndex === gameConfig.totalImages) {
-          window.location.href = 'https://forms.gle/r8Wekv2eo7LPwFuS8';
+          window.location.href = 'https://docs.google.com/forms/d/e/1FAIpQLSe_shblpTu7fw7sxEtQfIeBhk8Z0aq7fWpJ17mdNuvKB95z4g/viewform?usp=sharing&ouid=111752737259214705462';
           return;
      }
 
