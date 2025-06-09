@@ -145,7 +145,7 @@ prevBtn.addEventListener('click', () => {
 
 nextBtn.addEventListener('click', () => {
     if (currentImageIndex === gameConfig.totalImages) {
-        window.location.href = 'https://forms.gle/TsXBCcL5vqyjVF1Z8';
+        window.location.href = 'https://guidephy.github.io/internationalFriend/coast';
         return;
     }
 
